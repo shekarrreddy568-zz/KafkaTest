@@ -11,7 +11,7 @@ object KafkaConsumer {
 
   def main(args: Array[String]): Unit = {
 
-    val TOPIC="test000"
+    val TOPIC="WordsWithCountsTopic"
 
     val  props = new Properties()
     props.put("bootstrap.servers", "hadoop-fra-5.intern.beon.net:9092")
@@ -27,7 +27,7 @@ object KafkaConsumer {
     while(true){
       val records=consumer.poll(100)
       for (record<-records.asScala){
-        println(record)
+        println(s"key: ${record.key} and value: ${record.value()}")
       }
     }
   }
