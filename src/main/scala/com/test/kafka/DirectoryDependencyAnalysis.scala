@@ -20,8 +20,12 @@ object DirectoryDependencyAnalysis extends LazyLogging {
         .map(tuple => tuple._2 +: tuple._1)                   // Prepend the root to the array of directories
         .map(arr => arr.filter(char => char != ""))           // filter the emplty strings
         .foreach { arr =>
-        for (index <- 0 until arr.length - 1) {
-          println(s"parent of ${arr(index)} is ${arr(index + 1)}")  // print the result
+//        for (index <- 0 until arr.length - 1) {
+//          println(s"parent of ${arr(index)} is ${arr(index + 1)}")  // print the result
+//        }
+
+        for((e,count) <- arr.zipWithIndex) {
+          println(s"parent of $e is ${arr(count + 1)}")
         }
         println(s"${arr.head} is root\n")                           // print the result
 
@@ -31,6 +35,4 @@ object DirectoryDependencyAnalysis extends LazyLogging {
       case e: Exception => logger.info(e.getMessage)
     }
   }
-
-
 }

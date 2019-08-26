@@ -1,35 +1,42 @@
 package com.test.kafka
 
 import java.util
-import java.util.Properties
-
-import org.apache.kafka.clients.consumer.KafkaConsumer
-
-import scala.collection.JavaConverters._
+import java.util.{Collections, Properties}
+import java.time.Duration
+import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 
 object KafkaConsumer {
 
   def main(args: Array[String]): Unit = {
 
-    val TOPIC="WordsWithCountsTopic"
+    val topics = "test_topic"
+    val consumer = new KafkaConsumer[String, String](getProperties) // creating Consumer instance
+    consumer.subscribe(Collections.singletonList(topics)) // subscribing to the topics
 
-    val  props = new Properties()
-    props.put("bootstrap.servers", "hadoop-fra-5.intern.beon.net:9092")
+    println("polling")
+    while (true) {
+      val records = consumer.poll(Duration.ofSeconds(1)) // polling for records
+      val it = records.iterator()
 
-    props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-    props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer")
-    props.put("group.id", "G1")
+      while (it.hasNext()) {
 
-    val consumer = new KafkaConsumer[String, String](props)
-
-    consumer.subscribe(util.Collections.singletonList(TOPIC))
-
-    while(true){
-      val records=consumer.poll(100)
-      for (record<-records.asScala){
-        println(s"key: ${record.key} and value: ${record.value()}")
+        val record = it.next()
+        println("key: " + record.key() + " , " + "value: " + record.value())
       }
+
     }
+    consumer.close()
+}
+  def getProperties: Properties = {
+    val props: Properties = new Properties
+    props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "hadoop-fra-5.intern.beon.net:9092")
+    props.put(ConsumerConfig.GROUP_ID_CONFIG, "test_consumer")
+    props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer")
+    props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.connect.json.JsonDeserializer")
+    props.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor")
+    // props.put("schema.registry.url", "http://schemaregistry:8081")
+    props
+
   }
 
 }
