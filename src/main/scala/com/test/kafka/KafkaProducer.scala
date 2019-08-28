@@ -23,15 +23,15 @@ object KafkaProducer {
       override def onCompletion(metadata: RecordMetadata, exception: Exception): Unit = {
         Option(exception) match {
           case Some(err) => println(s"Failed to produce: $err")
-          case None =>  println(s"Topic: ${metadata.topic()}, Partition: ${metadata.partition()}, offset: ${metadata.offset()}")
+          case None => println(s"Topic: ${metadata.topic()}, Partition: ${metadata.partition()}, offset: ${metadata.offset()}")
         }
       }
     }
 
     (1 to 100).foreach { i =>
-      val value =   s"""{"id":$i,"message":Hi$i}"""
+      val value = s"""{"id":$i,"message":Hi$i}"""
       val payload: JsonNode = mapper.valueToTree(value)
-     // val payload = JSON.parseFull(value)
+      // val payload = JSON.parseFull(value)
 
       val record = new ProducerRecord[String, JsonNode](topic, key, payload)
       producer.send(record, callback)
@@ -55,9 +55,9 @@ object KafkaProducer {
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.connect.json.JsonSerializer")
     props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor")
     // props.put("schema.registry.url", "http://schemaregistry:8081")
-//    props.put("sasl.mechanism","PLAIN")
-//    props.put("security.protocol","SASL_PLAINTEXT")
-//    props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker1\" password=\"kafkabroker1-secret\";")
+    //    props.put("sasl.mechanism","PLAIN")
+    //    props.put("security.protocol","SASL_PLAINTEXT")
+    //    props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker1\" password=\"kafkabroker1-secret\";")
     props
 
   }
@@ -65,8 +65,8 @@ object KafkaProducer {
   def createTopic(topic: String, partitions: Int, replication: Int, Config: Properties): Unit = {
     val newTopic = new NewTopic(topic, partitions, replication.toShort)
     val adminClient = AdminClient.create(Config)
-    Try (adminClient.createTopics(Collections.singletonList(newTopic)).all.get).recover {
-      case e :Exception =>
+    Try(adminClient.createTopics(Collections.singletonList(newTopic)).all.get).recover {
+      case e: Exception =>
         // Ignore if TopicExistsException, which may be valid if topic exists
         if (!e.getCause.isInstanceOf[TopicExistsException]) throw new RuntimeException(e)
     }

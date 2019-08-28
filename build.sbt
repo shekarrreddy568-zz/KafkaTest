@@ -43,4 +43,5 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.0.0-RC3"
 
 
+libraryDependencies += "io.circe" %% "circe-yaml" % "0.10.0"
 

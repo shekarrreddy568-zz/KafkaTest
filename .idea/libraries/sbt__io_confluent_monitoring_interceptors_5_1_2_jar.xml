@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sbt: io.confluent:monitoring-interceptors:5.1.2:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.ivy2/cache/io.confluent/monitoring-interceptors/jars/monitoring-interceptors-5.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

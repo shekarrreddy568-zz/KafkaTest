@@ -2,11 +2,9 @@ package com.test.kafka
 
 import java.util.{Collections, Properties}
 
-import io.confluent.controlcenter.record.Controlcenter.TopicPartition
 import org.apache.kafka.clients.admin._
 import org.apache.kafka.common.acl.{AccessControlEntry, AccessControlEntryFilter, AclBinding, AclBindingFilter, AclOperation, AclPermissionType}
 import org.apache.kafka.common.config.{ConfigResource, TopicConfig}
-import org.apache.kafka.common.errors.TopicExistsException
 import org.apache.kafka.common.resource.{Resource, ResourceFilter, ResourceType}
 
 import collection.JavaConverters._
