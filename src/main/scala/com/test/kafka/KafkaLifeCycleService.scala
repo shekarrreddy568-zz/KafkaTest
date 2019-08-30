@@ -1,15 +1,29 @@
 package com.test.kafka
 
+import java.io.{File, FileInputStream}
+import java.util
 import java.util.{Dictionary, Properties}
+
 import org.apache.kafka.clients.admin.{AdminClient, AdminClientConfig, Config, ConfigEntry, NewTopic}
 import org.apache.kafka.common.config.{ConfigResource, TopicConfig}
 import org.apache.kafka.common.errors.TopicExistsException
+import org.yaml.snakeyaml.Yaml
+
+import scala.collection.JavaConverters._
 import scala.util._
-import collection.JavaConverters._
+
 
 object KafkaLifeCycleService {
 
   def main(args: Array[String]): Unit = {
+
+    val data = "src/main/resources/itergo_a.yml"
+    val ios = new FileInputStream(new File(data))
+    val yaml = new Yaml
+    val obj = yaml.load(ios)
+//   println(obj.get("nameSpace"))
+//    val topicsList = obj.get("topics")
+//    println(topicsList)
 
     //    val adminClient = AdminClient.create(getProperties)
     //    val topic_name = "test001"
