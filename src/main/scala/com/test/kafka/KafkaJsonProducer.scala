@@ -9,13 +9,13 @@ import org.apache.kafka.clients.producer._
 import com.fasterxml.jackson.databind.{JsonNode, ObjectMapper}
 
 
-object KafkaProducer {
+object KafkaJsonProducer {
 
   def main(args: Array[String]): Unit = {
     val mapper = new ObjectMapper
-    val topic: String = "test_topic"
+    val topic: String = "raj_test_topic"
 
-    createTopic(topic, 1, 3, getProperties)
+   // createTopic(topic, 1, 3, getProperties)
 
     val producer = new KafkaProducer[String, JsonNode](getProperties)
     val key: String = "payment"
@@ -29,9 +29,8 @@ object KafkaProducer {
     }
 
     (1 to 100).foreach { i =>
-      val value = s"""{"id":$i,"message":Hi$i}"""
+      val value = s"""{"id":$i,"message":Test Message-ß$i}"""
       val payload: JsonNode = mapper.valueToTree(value)
-      // val payload = JSON.parseFull(value)
 
       val record = new ProducerRecord[String, JsonNode](topic, key, payload)
       producer.send(record, callback)
@@ -40,24 +39,19 @@ object KafkaProducer {
 
     producer.flush()
     producer.close()
-
-    //  def send(topic: String, payload: String): Unit = {
-    //    val record = new ProducerRecord[String, String](topic, key, payload)
-    //    producer.send(record)
-    //  }
   }
 
   def getProperties: Properties = {
     val props: Properties = new Properties
-    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "hadoop-fra-5.intern.beon.net:9092")
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka.elisabeth.mytaxi.com")
     props.put(ProducerConfig.CLIENT_ID_CONFIG, "test_producer")
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.connect.json.JsonSerializer")
     props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor")
     // props.put("schema.registry.url", "http://schemaregistry:8081")
-    //    props.put("sasl.mechanism","PLAIN")
-    //    props.put("security.protocol","SASL_PLAINTEXT")
-    //    props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker1\" password=\"kafkabroker1-secret\";")
+    // props.put("sasl.mechanism","PLAIN")
+    // props.put("security.protocol","SASL_PLAINTEXT")
+    // props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker1\" password=\"kafkabroker1-secret\";")
     props
 
   }

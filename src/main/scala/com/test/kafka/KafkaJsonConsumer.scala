@@ -5,7 +5,7 @@ import java.util.{Collections, Properties}
 import java.time.Duration
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 
-object KafkaConsumer {
+object KafkaJsonConsumer {
 
   def main(args: Array[String]): Unit = {
 
