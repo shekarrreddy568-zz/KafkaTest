@@ -1,0 +1,22 @@
+{
+  "namespace": "com.test.kafka.avro",
+  "type": "record",
+  "name": "User",
+  "fields":[
+    {
+      "name": "id", "type": "int"
+    },
+    {
+      "name": "event_date",  "type": "long"
+    },
+    {
+      "name": "tour_value",  "type": "double"
+    },
+    {
+      "name": "id_driver",  "type": "int"
+    },
+    {
+      "name": "id_passenger",  "type": "int"
+    }
+  ]
+}

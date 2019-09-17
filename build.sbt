@@ -42,6 +42,10 @@ libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % 
 // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.0.0-RC3"
 
+libraryDependencies += "io.confluent" % "kafka-avro-serializer" % "4.0.0"
 
 libraryDependencies += "io.circe" %% "circe-yaml" % "0.10.0"
 
+libraryDependencies += "io.confluent" % "kafka-streams-avro-serde" % "4.0.0"
+
+libraryDependencies += "org.apache.avro" % "avro" % "1.8.2"

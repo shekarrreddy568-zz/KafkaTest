@@ -43,15 +43,15 @@ object KafkaJsonProducer {
 
   def getProperties: Properties = {
     val props: Properties = new Properties
-    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka.elisabeth.mytaxi.com")
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "confluent-kafka.elisabeth.mytaxi.com:9092")
     props.put(ProducerConfig.CLIENT_ID_CONFIG, "test_producer")
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer")
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.connect.json.JsonSerializer")
     props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor")
-    // props.put("schema.registry.url", "http://schemaregistry:8081")
-    // props.put("sasl.mechanism","PLAIN")
-    // props.put("security.protocol","SASL_PLAINTEXT")
-    // props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker1\" password=\"kafkabroker1-secret\";")
+    props.put("schema.registry.url", "https://confluent-schemaregistry.elisabeth.mytaxi.com")
+    props.put("sasl.mechanism","PLAIN")
+    props.put("security.protocol","SASL_PLAINTEXT")
+    props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker\" password=\"KQ$3J.?3=Kk>:(ZS\";")
     props
 
   }
