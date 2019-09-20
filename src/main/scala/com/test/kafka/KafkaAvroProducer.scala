@@ -27,7 +27,7 @@ object KafkaAvroProducer extends LazyLogging {
 
     val key: String = "payment"
     while (true) {
-      val topic = "payments"
+      val topic = "freenow.de.payments"
       val r = scala.util.Random
       val id = r.nextInt(10000000)
       val tour_value = r.nextDouble() * 100
