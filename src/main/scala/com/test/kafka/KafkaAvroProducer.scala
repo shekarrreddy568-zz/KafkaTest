@@ -27,7 +27,7 @@ object KafkaAvroProducer extends LazyLogging {
 
     val key: String = "payment"
     while (true) {
-      val topic = "freenow.de.payments"
+      val topic = "raj_test555"
       val r = scala.util.Random
       val id = r.nextInt(10000000)
       val tour_value = r.nextDouble() * 100
@@ -46,14 +46,20 @@ object KafkaAvroProducer extends LazyLogging {
 
   def getProperties: Properties = {
     val props: Properties = new Properties
-    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "confluent-kafka.elisabeth.mytaxi.com:9092")
+//    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "confluent-kafka.elisabeth.mytaxi.com:9092")
+//    props.put(ProducerConfig.CLIENT_ID_CONFIG, "test_producer")
+//    props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getCanonicalName)
+//    props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[KafkaAvroSerializer].getCanonicalName)
+//    props.put("schema.registry.url", "https://confluent-schemaregistry.elisabeth.mytaxi.com")
+//     props.put("sasl.mechanism","PLAIN")
+//     props.put("security.protocol","SASL_PLAINTEXT")
+//     props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker\" password=\"KQ$3J.?3=Kk>:(ZS\";")
+
+    props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka.elisabeth.mytaxi.com:9092")
     props.put(ProducerConfig.CLIENT_ID_CONFIG, "test_producer")
     props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, classOf[StringSerializer].getCanonicalName)
     props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, classOf[KafkaAvroSerializer].getCanonicalName)
-    props.put("schema.registry.url", "https://confluent-schemaregistry.elisabeth.mytaxi.com")
-     props.put("sasl.mechanism","PLAIN")
-     props.put("security.protocol","SASL_PLAINTEXT")
-     props.put("sasl.jaas.config","org.apache.kafka.common.security.plain.PlainLoginModule required username=\"kafkabroker\" password=\"KQ$3J.?3=Kk>:(ZS\";")
+    props.put("schema.registry.url", "https://schemaregistry.elisabeth.mytaxi.com")
     props
 
   }

@@ -13,7 +13,7 @@ object KafkaAvroConsumer extends LazyLogging {
 
   def main(args: Array[String]): Unit = {
 
-    logger.info("starting payments consumer application.......")
+    println("starting payments consumer application.......")
 
     val topics = ConfigFactory.load().getString("application.topic.name")
 
@@ -29,7 +29,7 @@ object KafkaAvroConsumer extends LazyLogging {
         while (it.hasNext()) {
 
           val record = it.next()
-          logger.info("key: " + record.key() + " , " + "value: " + record.value())
+          println("key: " + record.key() + " , " + "value: " + record.value())
         }
 
       }
