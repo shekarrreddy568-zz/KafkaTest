@@ -1,4 +1,4 @@
-package com.test.kafka
+package com.test.kafka.avroClients
 
 import scala.annotation.switch
 

@@ -19,7 +19,6 @@ libraryDependencies += "com.typesafe.play" %% "play-json" % "2.7.3"
 // https://mvnrepository.com/artifact/com.typesafe.play/play
 libraryDependencies += "com.typesafe.play" %% "play" % "2.7.3"
 
-
 // https://mvnrepository.com/artifact/com.typesafe.scala-logging/scala-logging
 libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
 
@@ -49,3 +48,9 @@ libraryDependencies += "io.circe" %% "circe-yaml" % "0.10.0"
 libraryDependencies += "io.confluent" % "kafka-streams-avro-serde" % "4.0.0"
 
 libraryDependencies += "org.apache.avro" % "avro" % "1.8.2"
+
+libraryDependencies += "log4j" % "log4j" % "1.2.17"
+
+libraryDependencies +=  "ch.qos.logback" % "logback-classic" % "1.2.3"
+
+libraryDependencies += "net.logstash.logback" % "logstash-logback-encoder" % "5.2"

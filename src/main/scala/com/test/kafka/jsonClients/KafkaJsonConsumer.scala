@@ -1,8 +1,8 @@
-package com.test.kafka
+package com.test.kafka.jsonClients
 
-import java.util
-import java.util.{Collections, Properties}
 import java.time.Duration
+import java.util.{Collections, Properties}
+
 import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 
 object KafkaJsonConsumer {

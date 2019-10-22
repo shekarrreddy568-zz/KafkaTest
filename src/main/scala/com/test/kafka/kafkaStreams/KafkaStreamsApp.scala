@@ -1,4 +1,4 @@
-package com.test.kafka
+package com.test.kafka.kafkaStreams
 
 import java.util.Properties
 import java.util.concurrent.TimeUnit

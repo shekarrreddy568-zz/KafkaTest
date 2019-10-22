@@ -1,13 +1,13 @@
-package com.test.kafka
+package com.test.kafka.adminCient
 
 import java.util.{Collections, Properties}
 
 import org.apache.kafka.clients.admin._
-import org.apache.kafka.common.acl.{AccessControlEntry, AccessControlEntryFilter, AclBinding, AclBindingFilter, AclOperation, AclPermissionType}
+import org.apache.kafka.common.acl._
 import org.apache.kafka.common.config.{ConfigResource, TopicConfig}
 import org.apache.kafka.common.resource.{Resource, ResourceFilter, ResourceType}
 
-import collection.JavaConverters._
+import scala.collection.JavaConverters._
 import scala.util.Try
 
 object AdminClientAPI {

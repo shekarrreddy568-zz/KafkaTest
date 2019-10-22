@@ -1,12 +1,13 @@
-package com.test.kafka
+package com.test.kafka.jsonClients
 
 import java.util.{Collections, Properties}
 
-import scala.util.Try
-import org.apache.kafka.clients.admin.{AdminClient, NewTopic}
-import org.apache.kafka.common.errors.TopicExistsException
-import org.apache.kafka.clients.producer._
 import com.fasterxml.jackson.databind.{JsonNode, ObjectMapper}
+import org.apache.kafka.clients.admin.{AdminClient, NewTopic}
+import org.apache.kafka.clients.producer._
+import org.apache.kafka.common.errors.TopicExistsException
+
+import scala.util.Try
 
 
 object KafkaJsonProducer {

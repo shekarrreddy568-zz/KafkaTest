@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="kafkatest [file:/Users/raj.chinthalapellymytaxi.com/Documents/Git-Personal/KafkaTest/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="kafkatest [file:/Users/raj.chinthalapelly@mytaxi.com/git-personal/KafkaTest/]" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="SBT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/../../target/scala-2.12/classes" />
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.12/test-classes" />
@@ -15,6 +15,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: com.101tec:zkclient:0.10:jar" level="project" />
+    <orderEntry type="library" name="sbt: net.logstash.logback:logstash-logback-encoder:5.2:jar" level="project" />
     <orderEntry type="library" name="sbt: io.confluent:kafka-schema-registry-client:4.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: io.confluent:kafka-avro-serializer:4.0.0:jar" level="project" />
     <orderEntry type="library" name="sbt: io.confluent:common-config:4.0.0:jar" level="project" />
@@ -91,5 +92,8 @@
     <orderEntry type="library" name="sbt: org.xerial.snappy:snappy-java:1.1.7.3:jar" level="project" />
     <orderEntry type="library" name="sbt: org.yaml:snakeyaml:1.24:jar" level="project" />
     <orderEntry type="library" name="sbt: io.confluent:kafka-streams-avro-serde:4.0.0:jar" level="project" />
+    <orderEntry type="library" name="sbt: log4j:log4j:1.2.17:jar" level="project" />
+    <orderEntry type="library" name="sbt: ch.qos.logback:logback-classic:1.2.3:jar" level="project" />
+    <orderEntry type="library" name="sbt: ch.qos.logback:logback-core:1.2.3:jar" level="project" />
   </component>
 </module>

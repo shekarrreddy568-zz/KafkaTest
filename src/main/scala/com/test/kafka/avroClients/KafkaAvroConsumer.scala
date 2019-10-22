@@ -1,13 +1,13 @@
-package com.test.kafka
+package com.test.kafka.avroClients
 
 import java.util
 import java.util.Properties
 
 import com.typesafe.config.ConfigFactory
-import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
 import com.typesafe.scalalogging.LazyLogging
-import org.apache.kafka.common.serialization.StringDeserializer
 import io.confluent.kafka.serializers.KafkaAvroDeserializer
+import org.apache.kafka.clients.consumer.{ConsumerConfig, KafkaConsumer}
+import org.apache.kafka.common.serialization.StringDeserializer
 
 object KafkaAvroConsumer extends LazyLogging {
 
